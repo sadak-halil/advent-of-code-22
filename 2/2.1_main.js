@@ -14,53 +14,72 @@ arrayOfStrings.forEach(string => {
     arrayOfArrays.push(str)
 })
 
+// method to convert the second letter into the same later as the one of the opponent
+const convertLetter = letter => {
+    switch (letter) {
+        case 'X':
+            return 'A'
+        case 'Y':
+            return 'B'
+        case 'Z':
+            return 'C'
+        default:
+            break;
+    }
+}
+
+// call the conversion method on the existing input array
+arrayOfArrays.forEach((array) => {
+    array[1] = convertLetter(array[1])
+})
+
 const result = game => {
     switch (game[1]) {
-        case 'X':
-            return looseAgainst(game[0]);
-        case 'Y':
-            return drawAgainst(game[0]) + 3;
-        case 'Z':
-            return winAgainst(game[0]) + 6;
+        case 'A':
+            return playRockAgainst(game[0]) + 1;
+        case 'B':
+            return playPaperAgainst(game[0]) + 2;
+        case 'C':
+            return playScissorsAgainst(game[0]) + 3;
         default:
             break;
     }
 }
 
-const looseAgainst = play => {
+const playRockAgainst = play => {
     switch (play) {
         case 'A':
             return 3;
         case 'B':
-            return 1;
+            return 0;
         case 'C':
-            return 2;
+            return 6;
         default:
             break;
     }
 }
 
-const drawAgainst = play => {
+const playPaperAgainst = play => {
     switch (play) {
         case 'A':
-            return 1;
+            return 6;
         case 'B':
-            return 2;
-        case 'C':
             return 3;
+        case 'C':
+            return 0;
         default:
             break;
     }
 }
 
-const winAgainst = play => {
+const playScissorsAgainst = play => {
     switch (play) {
         case 'A':
-            return 2;
+            return 0;
         case 'B':
-            return 3;
+            return 6;
         case 'C':
-            return 1;
+            return 3;
         default:
             break;
     }
