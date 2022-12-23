@@ -16,9 +16,11 @@ arrayOfStrings.forEach(line => {
     simplifiedInstructions.push(instruction);
 })
 
-// function to execute the move: add to the second stack the number of elements removed from the first stack
+// function to execute the move/s
 const move = (count, stack1, stack2) => {
-    stacks[stack2] = stacks[stack2].concat(stacks[stack1].splice(-count,count));
+    for(let i=0; i<+count; i++){
+        stacks[+stack2].push(stacks[+stack1].pop())
+    }
 }
 
 // iteratte through the instructions and call the move function on each line
