@@ -9,11 +9,11 @@ let position = -1; // will serve as a break for the while loop
 let i = 0;
 
 while (position === -1) {
-    if (check(data.slice(i,i+14))) {
+    if (check(data.slice(i,i+4))) {
         i++;
         continue;
     } else {
-    position = i + 14;
+    position = i + 4;
     console.log(`position is: ${position}`);
     }
 }
